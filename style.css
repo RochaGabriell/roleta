@@ -1,0 +1,126 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body {
+  background: linear-gradient(135deg, #c3a3f1, #6414e9);
+  height: 100vh;
+}
+.wrapper {
+  width: 90%;
+  max-width: 34.37em;
+  max-height: 90vh;
+  background-color: #ffffff;
+  /* position: absolute; */
+  /* transform: translate(-50%, -50%); */
+  /* top: 50%; */
+  /* left: 50%; */
+  padding: 3em;
+  border-radius: 1em;
+  box-shadow: 0 4em 5em rgba(27, 8, 53, 0.2);
+}
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+#wheel {
+  max-height: inherit;
+  width: inherit;
+  top: 0;
+  padding: 0;
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#spin-btn {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  height: 26%;
+  width: 26%;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 0;
+  background: radial-gradient(#c3a3f1 50%, #6414e9 85%);
+  color: #fdf0ff;
+  text-transform: uppercase;
+  font-size: 1.8em;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+#spinner-arrow {
+  position: absolute;
+  width: 4em;
+  top: 45%;
+  right: -8%;
+}
+#final-value {
+  font-size: 1.5em;
+  text-align: center;
+  color: #202020;
+  font-weight: 500;
+}
+
+/* Estilização básica do modal */
+.modal {
+  display: none; /* Oculto por padrão */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  text-align: center;
+  height: -webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#prizeImage {
+  position: relative;
+  width: 150px;
+  height: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    font-size: 12px;
+  }
+  img {
+    right: -5%;
+  }
+
+  #final-value {
+    margin-top: 1em;
+    font-size: 1.2em;
+  }
+}
