@@ -250,11 +250,6 @@ fieldset {
 }
 
 @media screen and (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    gap: 10px;
-  }
-
   .wrapper {
     font-size: 12px;
   }
