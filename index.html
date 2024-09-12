@@ -11,14 +11,43 @@
 </head>
 
 <body>
-  <div style="display: flex; justify-content: center; align-items: center; height: 100vh; padding: 20px;">
-    <div>
-      <h1>Roda da Fortuna</h1>
-      <p>Escolha um prêmio e clique no botão para girar a roleta</p>
-      <!-- Lista  de prêmios -->
-    </div>
-    <div class="wrapper">
-      <div class="container">
+  <main class="container">
+    <!-- Formulário -->
+    <form id="userForm" method="POST">
+      <h3>Roda da Fortuna</h3>
+      <h4>Preencha o formulário e clique para girar a roleta</h4>
+      <fieldset>
+        <label for="name">Nome Completo:</label>
+        <input type="text" id="name" name="name" placeholder="Nome" tabindex="1" required />
+      </fieldset>
+      <fieldset>
+        <label for="school">Escola:</label>
+        <input type="text" id="school" name="school" placeholder="Escola" tabindex="2" required />
+      </fieldset>
+      <fieldset>
+        <label for="dob">Data de Nascimento:</label>
+        <input type="date" id="dob" name="dob" placeholder="Data de Nascimento" tabindex="3" required />
+      </fieldset>
+      <fieldset>
+        <label for="phone">Telefone:</label>
+        <input type="tel" id="phone" name="phone" placeholder="Telefone" tabindex="4" required />
+      </fieldset>
+      <fieldset>
+        <button name="submit" type="submit" id="contact-submit" data-submit="...Enviando">
+          Enviar e Girar
+        </button>
+      </fieldset>
+      <p class="copyright">
+        Design by
+        <a href="https://github.com/rochagabriell" target="_blank" title="Gabriel Rocha">
+          RochaGabriell
+        </a>
+      </p>
+    </form>
+
+    <!-- Roda da Fortuna -->
+    <div class="wrapper-prize" style="display: none;">
+      <div class="container-wheel">
         <canvas id="wheel"></canvas>
         <button id="spin-btn">Girar</button>
         <img id="spinner-arrow" src="spinner-arrow.svg" alt="spinner-arrow" />
@@ -27,8 +56,7 @@
         <p>Clique no botão para girar a roleta</p>
       </div>
     </div>
-  </div>
-
+  </main>
 
   <!-- Modal -->
   <div id="prizeModal" class="modal">
@@ -42,9 +70,19 @@
   <!-- Chart JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
   <!-- Chart JS Plugin for displaying text over chart -->
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js">
+  </script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- jQuery Mask Plugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js">
+  </script>
   <!-- Script -->
+  <script>
+    $(document).ready(function () {
+      $('#phone').mask('(00) 00000-0000');
+    });
+  </script>
   <script src="script.js"></script>
 </body>
 

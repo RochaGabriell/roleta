@@ -51,13 +51,7 @@ let myChart = new Chart(wheel, {
   type: 'pie',
   data: {
     //Rótulos (valores que serão exibidos no gráfico)
-    labels: [
-      'Carregador',
-      'Fone',
-      'Smartwatch',
-      'Extra',
-      'Desconto',
-    ],
+    labels: ['Carregador', 'Fone', 'Smartwatch', 'Extra', 'Desconto'],
     //Configurações para o conjunto de dados/gráfico de pizza
     datasets: [
       {
@@ -99,6 +93,8 @@ const valueGenerator = (angleValue) => {
       prizeImage.src = prize.image;
       prizeModal.style.display = 'block';
       spinBtn.disabled = false;
+
+      submitForm(prize);
       break;
     }
   }
@@ -138,3 +134,38 @@ spinBtn.addEventListener('click', () => {
     }
   }, 11);
 });
+
+const submitForm = (prize) => {
+  const formData = {
+    name: document.getElementById('name').value,
+    school: document.getElementById('school').value,
+    dob: document.getElementById('dob').value,
+    phone: document.getElementById('phone').value,
+    prize: prize,
+  };
+
+  console.log(formData);
+
+  fetch('https://sua-api.com/endpoint', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+};
+
+document
+  .getElementById('userForm')
+  .addEventListener('submit', function (event) {
+    event.preventDefault();
+    document.querySelector('.wrapper-prize').style.display = 'block';
+    document.querySelector('#userForm').style.display = 'none';
+  });
