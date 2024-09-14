@@ -18,7 +18,8 @@
       <h4>Preencha o formulário e clique para girar a roleta</h4>
       <fieldset>
         <label for="name">Nome Completo:</label>
-        <input type="text" id="name" name="name" placeholder="Nome" tabindex="1" required />
+        <input type="text" id="name" name="name" placeholder="Nome" tabindex="1" required pattern="^[A-Za-zÀ-ÿ\s]+$"
+          title="Apenas letras e espaços são permitidos" />
       </fieldset>
       <fieldset>
         <label for="school">Escola:</label>
@@ -30,7 +31,8 @@
       </fieldset>
       <fieldset>
         <label for="phone">Telefone:</label>
-        <input type="tel" id="phone" name="phone" placeholder="Telefone" tabindex="4" required />
+        <input type="tel" id="phone" name="phone" placeholder="Telefone" tabindex="4" required
+          pattern="\(\d{2}\) \d{5}-\d{4}" title="Formato: (XX) XXXXX-XXXX" />
       </fieldset>
       <fieldset>
         <button name="submit" type="submit" id="contact-submit" data-submit="...Enviando">
@@ -47,13 +49,41 @@
 
     <!-- Roda da Fortuna -->
     <div class="wrapper-prize" style="display: none;">
-      <div class="container-wheel">
-        <canvas id="wheel"></canvas>
-        <button id="spin-btn">Girar</button>
-        <img id="spinner-arrow" src="spinner-arrow.svg" alt="spinner-arrow" />
+      <div class="wrapper-awards">
+        <h3>Prêmios</h3>
+        <div class="awards">
+          <div class="prize">
+            <img src="carregadorPortatil.webp" alt="Prize 1" />
+            <p>1 - Carregador Portátil</p>
+          </div>
+          <div class="prize">
+            <img src="fone.jpg" alt="Prize 2" />
+            <p>2 - Fone de Ouvido</p>
+          </div>
+          <div class="prize">
+            <img src="smartwatch.jpg" alt="Prize 2" />
+            <p>3 - Smartwatch</p>
+          </div>
+          <div class="prize">
+            <img src="voceEscolhe.jpeg" alt="Prize 2" />
+            <p>4 - Você Escolhe</p>
+          </div>
+          <div class="prize">
+            <img src="desconto.png" alt="Prize 2" />
+            <p>5 - Desconto de 50%</p>
+          </div>
+        </div>
       </div>
-      <div id="final-value">
-        <p>Clique no botão para girar a roleta</p>
+
+      <div class="wrapper-wheel">
+        <div class="container-wheel">
+          <canvas id="wheel"></canvas>
+          <button id="spin-btn">Girar</button>
+          <img id="spinner-arrow" src="spinner-arrow.svg" alt="spinner-arrow" />
+        </div>
+        <div id="final-value">
+          <p>Clique no botão para girar a roleta</p>
+        </div>
       </div>
     </div>
   </main>
@@ -63,6 +93,9 @@
     <div class="modal-content">
       <span class="close">&times;</span>
       <h2 id="prizeName"></h2>
+      <p id="prizeDescription">Basta ir até a Criare e realizar sua matrícula para receber o prêmio. Informe que você
+        foi sorteado na Roda da Fortuna. A equipe verificará os dados informados no formulário para confirmar sua
+        participação e premiação.</p>
       <img id="prizeImage" src="" alt="Prize Image" />
     </div>
   </div>

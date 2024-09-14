@@ -18,28 +18,30 @@ const rotationValues = [
 ];
 
 const resultValueMap = {
-  1: { name: 'Carregador Portátil', image: 'fone.webp' },
-  2: { name: 'Fone de Ouvido', image: 'fone.webp' },
-  3: { name: 'Smartwatch', image: 'fone.webp' },
-  4: { name: 'Tentativa Extra', image: 'fone.webp' },
-  5: { name: 'Desconto de 50%', image: 'fone.webp' },
+  1: { name: 'Carregador Portátil', image: 'carregadorPortatil.webp' },
+  2: { name: 'Fone de Ouvido', image: 'fone.jpg' },
+  3: { name: 'Smartwatch', image: 'smartwatch.jpg' },
+  4: { name: 'Sua Escolha', image: 'voceEscolhe.jpeg' },
+  5: { name: 'Desconto de 50%', image: 'desconto.png' },
 };
 
 //Tamanho de cada pedaço
 const data = [20, 20, 20, 20, 20];
 
 //Cor de fundo para cada pedaço
-var pieColors = ['#3f297e', '#1d61ac', '#169ed8', '#209b6c', '#60b236'];
+var pieColors = ['#030104', '#930800', '#030104', '#ff3e0a', '#930800'];
 
 // Fechar o modal quando o usuário clicar no botão de fechar
 closeModal.onclick = function () {
   prizeModal.style.display = 'none';
+  window.location.reload();
 };
 
 // Fechar o modal quando o usuário clicar fora do modal
 window.onclick = function (event) {
   if (event.target == prizeModal) {
     prizeModal.style.display = 'none';
+    window.location.reload();
   }
 };
 
@@ -51,7 +53,7 @@ let myChart = new Chart(wheel, {
   type: 'pie',
   data: {
     //Rótulos (valores que serão exibidos no gráfico)
-    labels: ['Carregador', 'Fone', 'Smartwatch', 'Extra', 'Desconto'],
+    labels: ['1', '2', '3', '4', '5'],
     //Configurações para o conjunto de dados/gráfico de pizza
     datasets: [
       {
@@ -67,14 +69,12 @@ let myChart = new Chart(wheel, {
     plugins: {
       //Esconder tooltip e legenda
       tooltip: false,
-      legend: {
-        display: false,
-      },
+      legend: { display: false },
       //Exibir rótulos dentro do gráfico de pizza
       datalabels: {
         color: '#ffffff',
         formatter: (_, context) => context.chart.data.labels[context.dataIndex],
-        font: { size: 24 },
+        font: { size: 20, family: 'Poppins' },
       },
     },
   },
@@ -141,7 +141,7 @@ const submitForm = (prize) => {
     school: document.getElementById('school').value,
     dob: document.getElementById('dob').value,
     phone: document.getElementById('phone').value,
-    prize: prize,
+    prize: prize.name,
   };
 
   console.log(formData);
@@ -166,6 +166,6 @@ document
   .getElementById('userForm')
   .addEventListener('submit', function (event) {
     event.preventDefault();
-    document.querySelector('.wrapper-prize').style.display = 'block';
+    document.querySelector('.wrapper-prize').style.display = 'flex';
     document.querySelector('#userForm').style.display = 'none';
   });

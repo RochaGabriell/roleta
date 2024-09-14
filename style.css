@@ -146,35 +146,80 @@ fieldset {
   border: 1px solid #aaa;
 }
 
-.wrapper {
+.wrapper-prize {
+  display: flex;
+  justify-content: space-around;
   width: 90%;
-  max-width: 34.37em;
-  max-height: 90vh;
+  height: 90%;
   background-color: #ffffff;
-  /* position: absolute; */
-  /* transform: translate(-50%, -50%); */
-  /* top: 50%; */
-  /* left: 50%; */
-  padding: 3em;
+  padding: 1.5em;
   border-radius: 1em;
   box-shadow: 0 4em 5em rgba(27, 8, 53, 0.2);
+  overflow: hidden;
+  gap: 1em;
 }
+
+.wrapper-awards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+.awards {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  justify-content: flex-start;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.prize {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  img {
+    width: 200px;
+    object-fit: cover;
+    height: 200px;
+    border-radius: 30%;
+  }
+}
+
+.wrapper-wheel {
+  display: flex;
+  flex-direction: column;
+}
+
 .container-wheel {
   position: relative;
   width: 100%;
   height: 100%;
 }
+
 #wheel {
   max-height: inherit;
   width: inherit;
   top: 0;
   padding: 0;
 }
+
 @keyframes rotate {
   100% {
     transform: rotate(360deg);
   }
 }
+
 #spin-btn {
   position: absolute;
   transform: translate(-50%, -50%);
@@ -185,19 +230,21 @@ fieldset {
   border-radius: 50%;
   cursor: pointer;
   border: 0;
-  background: radial-gradient(#c3a3f1 50%, #6414e9 85%);
+  background: radial-gradient(#d0b594 50%, #c68563 85%);
   color: #fdf0ff;
   text-transform: uppercase;
   font-size: 1.3em;
   letter-spacing: 0.1em;
   font-weight: 600;
 }
+
 #spinner-arrow {
   position: absolute;
   width: 4em;
-  top: 45%;
+  top: 50%;
   right: -8%;
 }
+
 #final-value {
   font-size: 1.5em;
   text-align: center;
@@ -207,7 +254,7 @@ fieldset {
 
 /* Estilização básica do modal */
 .modal {
-  display: none; /* Oculto por padrão */
+  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -219,17 +266,19 @@ fieldset {
 
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto;
+  margin: 8% auto;
   padding: 20px;
   border: 1px solid #888;
+  border-radius: 10px;
   width: 80%;
   text-align: center;
-  height: -webkit-fill-available;
   display: flex;
   flex-direction: column;
+  gap: 1em;
 }
 
 .close {
+  align-self: end;
   color: #aaa;
   float: right;
   font-size: 28px;
@@ -244,16 +293,28 @@ fieldset {
 }
 
 #prizeImage {
-  position: relative;
-  width: 150px;
-  height: auto;
+  align-self: center;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
 }
 
-@media screen and (max-width: 768px) {
-  .wrapper {
+@media screen and (max-width: 868px) {
+  .wrapper-prize {
+    flex-direction: column;
     font-size: 12px;
+    padding: 1em;
   }
-  img {
+
+  .awards {
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  #spinner-arrow {
     right: -5%;
   }
 
