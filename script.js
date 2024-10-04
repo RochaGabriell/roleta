@@ -18,11 +18,11 @@ const rotationValues = [
 ];
 
 const resultValueMap = {
-  1: { name: 'Carregador Portátil', image: 'carregadorPortatil.webp' },
-  2: { name: 'Fone de Ouvido', image: 'fone.jpg' },
-  3: { name: 'Smartwatch', image: 'smartwatch.jpg' },
-  4: { name: 'Sua Escolha', image: 'voceEscolhe.jpeg' },
-  5: { name: 'Desconto de 50%', image: 'desconto.png' },
+  1: { name: 'Carregador Portátil', image: 'img/carregadorPortatil.webp' },
+  2: { name: 'Fone de Ouvido', image: 'img/fone.jpg' },
+  3: { name: 'Smartwatch', image: 'img/smartwatch.jpg' },
+  4: { name: 'Sua Escolha', image: 'img/voceEscolhe.jpeg' },
+  5: { name: 'Desconto de 50%', image: 'img/desconto.png' },
 };
 
 //Tamanho de cada pedaço
@@ -144,22 +144,21 @@ const submitForm = (prize) => {
     prize: prize.name,
   };
 
-  console.log(formData);
+  // console.log(formData);
 
-  fetch('https://sua-api.com/endpoint', {
+  fetch('https://backend-sweepstake.onrender.com/submit', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(formData),
   })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Erro na requisição');
+      }
+      return response.json();
     })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+    .then((data) => console.log(data))
+    .catch((error) => console.error('Error:', error));
 };
 
 document
