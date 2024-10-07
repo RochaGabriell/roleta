@@ -146,7 +146,7 @@ const submitForm = (prize) => {
 
   // console.log(formData);
 
-  fetch('http://212.47.66.74:3000/submit', {
+  fetch('https://212.47.66.74:3000/submit', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(formData),
